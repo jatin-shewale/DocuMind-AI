@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Sora:wght@400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Instrument Sans", ui-sans-serif, system-ui;
+}
+
+.app-gradient {
+  background:
+    radial-gradient(1200px 500px at 10% -10%, rgba(59, 130, 246, 0.15), transparent 60%),
+    radial-gradient(900px 400px at 90% 0%, rgba(34, 197, 94, 0.12), transparent 55%),
+    linear-gradient(180deg, #f7f9fc 0%, #eef3f9 100%);
+}
+
+.dark .app-gradient {
+  background:
+    radial-gradient(1200px 500px at 10% -10%, rgba(96, 165, 250, 0.18), transparent 60%),
+    radial-gradient(900px 400px at 90% 0%, rgba(16, 185, 129, 0.16), transparent 55%),
+    linear-gradient(180deg, #0b0f14 0%, #111826 100%);
+}
