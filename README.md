@@ -28,59 +28,7 @@ Dashboard preview:
 
 ## System Architecture (Mermaid)
 
-```mermaid
-flowchart LR
-    classDef ingest fill:#e0f2fe,stroke:#38bdf8,stroke-width:1px,color:#0f172a
-    classDef embed fill:#ecfccb,stroke:#84cc16,stroke-width:1px,color:#0f172a
-    classDef store fill:#ffe4e6,stroke:#fb7185,stroke-width:1px,color:#0f172a
-    classDef retrieve fill:#fef3c7,stroke:#f59e0b,stroke-width:1px,color:#0f172a
-    classDef rank fill:#ede9fe,stroke:#8b5cf6,stroke-width:1px,color:#0f172a
-    classDef generate fill:#dbeafe,stroke:#3b82f6,stroke-width:1px,color:#0f172a
-    classDef ui fill:#f3e8ff,stroke:#a855f7,stroke-width:1px,color:#0f172a
-    classDef api fill:#dcfce7,stroke:#22c55e,stroke-width:1px,color:#0f172a
-
-    subgraph UI[Frontend]
-        U1[React UI
-Upload + Chat]:::ui
-        U2[Streamlit UI]:::ui
-    end
-
-    subgraph API[Backend API]
-        A1[FastAPI Endpoints
-/upload /query /documents]:::api
-    end
-
-    subgraph ING[Ingestion]
-        I1[PDF Loader]:::ingest
-        I2[Splitter]:::ingest
-        I3[Metadata + Source Tagging]:::ingest
-    end
-
-    subgraph EMB[Embeddings]
-        E1[HuggingFace Embeddings]:::embed
-    end
-
-    subgraph STORE[Vector Store]
-        S1[Chroma DB]:::store
-    end
-
-    subgraph RETR[Retrieval]
-        R1[Top-K Retriever]:::retrieve
-        R2[Reranker]:::rank
-    end
-
-    subgraph GEN[Generation]
-        G1[Prompt Template]:::generate
-        G2[LLM (Ollama Llama 3)]:::generate
-        G3[Answer + Sources]:::generate
-    end
-
-    U1 --> A1
-    U2 --> A1
-    A1 --> I1 --> I2 --> I3 --> E1 --> S1
-    A1 --> R1 --> R2 --> G1 --> G2 --> G3
-    S1 --> R1
-```
+![DocuMind AI Pro System Architecture](docs/screenshots/system_architecture.png)
 
 ## Usage
 
